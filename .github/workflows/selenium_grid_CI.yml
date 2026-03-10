@@ -24,12 +24,12 @@ jobs:
         run: docker compose up -d
 
       - name: Realizando testes com o pytest
-        run: pytest -n 2
+        run: pytest -n 2 --html=logs.html --self-contained-html
 
       - name: Upando relatórios de teste
         uses: actions/upload-artifact@v7.0.0
         with:
-          name: logs
+          name: logs.html
           path: .
           
         
