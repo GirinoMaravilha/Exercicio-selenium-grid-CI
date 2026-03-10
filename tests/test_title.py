@@ -17,6 +17,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import StaleElementReferenceException
 from selenium.common.exceptions import ElementClickInterceptedException
+import time
 
 
 def test_titulo_uol(driver:WebDriver):
@@ -39,6 +40,7 @@ def test_imagem_himiko(driver:WebDriver):
     url = "https://br.pinterest.com/pin/52143308181266866/" 
     
     driver.get(url)
+    time.sleep(5)
     img = driver.find_element(By.XPATH,"//div[@data-test-id='pin-closeup-image'] //img")
     print(img.get_attribute('src'))
     assert img is not None
@@ -49,6 +51,7 @@ def test_imagem_lucy(driver:WebDriver):
     url = "https://br.pinterest.com/pin/110338259620568720/"
 
     driver.get(url)
+    time.sleep(5)
     img = driver.find_element(By.XPATH,"//div[@data-test-id='pin-closeup-image'] //img")
     print(img.get_attribute('src'))
     assert img is not None
