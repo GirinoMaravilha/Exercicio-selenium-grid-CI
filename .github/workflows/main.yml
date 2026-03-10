@@ -1,0 +1,37 @@
+name: Exercicio Selenium Grid Pytest
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Upando o repositorio
+        uses: actions/checkout@v6.0.2
+
+      - name: Preparando ambiente Python
+        uses: actions/setup-python@v6.2.0
+        with:
+          python-version: '3.13'
+
+      - name: Instalando dependências
+        run: python3.13 -m pip install selenium pytest pytest-xdist
+
+      - name: Iniciando infra do docker compose
+        run: docker compose up -d
+
+      - name: Realizando testes com o pytest
+        run: pytest -n 2
+
+      - name: Upando relatórios de teste
+        uses: actions/upload-artifact@v7.0.0
+        with:
+          name: logs
+          path: .
+          
+        
+    
+    
