@@ -49,6 +49,6 @@ def test_imagem_lucy(driver:WebDriver):
     url = "https://br.pinterest.com/pin/110338259620568720/"
 
     driver.get(url)
-    img = driver.find_element(By.XPATH,"//div[@data-test-id='pin-closeup-image'] //img[@]")
+    img = driver.find_element(By.XPATH,"//div[@data-test-id='pin-closeup-image'] //img")
     print(img.get_attribute('src'))
     assert img is not None
