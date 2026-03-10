@@ -23,14 +23,17 @@ jobs:
       - name: Iniciando infra do docker compose
         run: docker compose up -d
 
+      - name: Esperando a infra subir
+        run: sleep 20
+
       - name: Realizando testes com o pytest
         run: pytest -n 2 --html=logs.html --self-contained-html
 
       - name: Upando relatórios de teste
         uses: actions/upload-artifact@v7.0.0
         with:
-          name: logs.html
-          path: .
+          name: logs
+          path: logs.html
           
         
     
